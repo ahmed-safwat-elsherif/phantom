@@ -30,7 +30,17 @@ const TableResults = () => {
                 <td>{row.size}</td>
                 <td>{row.website}</td>
                 <td>{row.price}</td>
-                <td>{row.status}</td>
+                {row.status ? (
+                  <td>
+                    {" "}
+                    <span className="badge badge-success">success</span>
+                  </td>
+                ) : (
+                  <td>
+                    {" "}
+                    <span className="badge badge-fail">fail</span>
+                  </td>
+                )}
               </tr>
             );
           })}

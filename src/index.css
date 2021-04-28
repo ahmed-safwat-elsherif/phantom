@@ -17,7 +17,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #202342 !important;
-  font-family: "Helvetica Neue";
 }
 #root {
   color: white;
@@ -314,7 +313,18 @@ a.link:hover {
 table::-webkit-scrollbar {
   width: 9px;
 }
-
+.table .badge {
+  font-size: 0.7rem;
+  padding: 5px;
+}
+.table .badge-success {
+  color: #63f4f7;
+  background-color: rgba(99, 244, 247, 0.2);
+}
+.table .badge-fail {
+  color: #fe7448;
+  background-color: rgba(254, 116, 72, 0.2);
+}
 /* Track */
 table::-webkit-scrollbar-track {
   background-color: rgba(255, 255, 255, 00.2);

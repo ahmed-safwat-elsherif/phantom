@@ -13,7 +13,7 @@ const mockup = [
     size: 9,
     website: "Footlocker UK",
     price: 211,
-    status: true,
+    status: false,
   },
   {
     date: "22 Feb 2021",
@@ -45,7 +45,7 @@ const mockup = [
     size: 9,
     website: "Footlocker UK",
     price: 211,
-    status: true,
+    status: false,
   },
   {
     date: "22 Feb 2021",
@@ -61,7 +61,7 @@ const mockup = [
     size: 9,
     website: "Footlocker UK",
     price: 211,
-    status: true,
+    status: false,
   },
   {
     date: "22 Feb 2021",
@@ -77,7 +77,7 @@ const mockup = [
     size: 9,
     website: "Footlocker UK",
     price: 211,
-    status: true,
+    status: false,
   },
   {
     date: "22 Feb 2021",
