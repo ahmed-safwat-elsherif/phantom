@@ -1,13 +1,466 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #202342 !important;
+  font-family: "Helvetica Neue";
+}
+#root {
+  color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ------------------------ Constants --------------------------*/
+.clickable {
+  cursor: pointer;
+}
+a.link-email {
+  text-decoration: underline;
+}
+a.link-email:hover {
+  text-decoration: none;
+}
+a.link,
+a.link-email {
+  color: #1ec1c3;
+}
+a.link:hover {
+  color: #1ec1c3;
+}
+/* --------------------- Profile section ------------------------- */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile h4.pname,
+.profile .email {
+  margin: 0;
+  font-weight: 400;
+}
+.profile h4.pname {
+  font-size: 0.8rem;
+}
+.profile .email {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+}
+.profile img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+/* -------------------- Notification component --------------------*/
+.notif-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.notif-icon .dot {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  display: inline-block;
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  background-color: #fe7448;
+  border-radius: 50%;
+}
+.notif-icon .bell {
+  border: 1px #2d325a solid;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  width: 2.6rem;
+  height: 2.6rem;
+  color: #6f7291;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notif-icon .bell:hover {
+  border: 2px #3d4479 solid;
+  color: #8a8db4;
+}
+.notif-icon .bell.active {
+  border: 2px #01a9f4 solid;
+  background-color: #01a9f4;
+  color: white;
+}
+
+/* ------------------------ DropDownMenu component -------------------- */
+.drop-down-menu {
+  position: relative;
+}
+.drop-down-menu .drop-down-btn {
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.drop-down-menu ul {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  background-color: #2d325a;
+  box-shadow: 0 0 40px #2d325a;
+
+  left: -5.5rem;
+  transition: 0.5s all ease-in-out;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100px;
+}
+.drop-down-menu ul li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.drop-down-menu ul li a {
+  text-decoration: none;
+  color: white;
+}
+.drop-down-menu ul.show-items {
+  transition: 0.3s all ease-in-out;
+  top: 10px;
+  opacity: 1;
+}
+.drop-down-menu ul.hide-items {
+  transition: 0.3s all ease-in-out;
+  top: 30px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------------------- notification menu ---------------------------*/
+.notification-menu {
+  position: relative;
+}
+.notification-menu .drop-down-btn {
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.notification-menu ul {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  background-color: #2d325a;
+  box-shadow: 0 0 40px #2d325a;
+
+  left: -6.6rem;
+  transition: 0.5s all ease-in-out;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 16rem;
+  border: 1px solid #3d447b;
+}
+.notification-menu ul li {
+  text-align: left;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+.notification-menu ul li.new {
+  border: 1px solid #fe7448;
+  border-radius: 6px;
+}
+.notification-menu ul li a {
+  text-decoration: none;
+  color: white;
+}
+.notification-menu ul.show-items {
+  transition: 0.3s all ease-in-out;
+  top: 50px;
+  opacity: 1;
+}
+.notification-menu ul.hide-items {
+  transition: 0.3s all ease-in-out;
+  top: 60px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ------------------------- control panel horizontal ------------------*/
+.control-panel-horizontal {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+.control-panel-horizontal div {
+  align-self: stretch;
+}
+/* ------------------------- control panel vertical ------------------*/
+.control-panel-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ------------------------------ Widget ---------------------------------*/
+.widget {
+  font-size: 0.8rem;
+  border-radius: 8px;
+  background-color: #2b2f55;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  height: 100%;
+  align-items: center;
+}
+.filter .filter-by {
+  display: flex;
+  font-size: 0.9rem;
+  margin: 0;
+  gap: 8px;
+  margin-top: 2px;
+}
+.filter .filter-by li {
+  background-color: salmon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.filter .filter-by li.active {
+  background-color: #01a9f4;
+  color: white;
+}
+.total-checkout,
+.total-failure {
+  flex: 3 1 260px;
+}
+.widget h4,
+.widget p {
+  margin: 0;
+  padding: 0;
+}
+.widget .title {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+.widget p {
+  font-size: 0.9rem;
+}
+.widget .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.widget .result-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-right: 5px;
+}
+.txt-success {
+  color: #63f4f7;
+}
+.txt-fail {
+  color: #fe7448;
+}
+.widget .out-of {
+  opacity: 0.6;
+}
+.icon-wrapper-success,
+.icon-wrapper-fail {
+  /* Ellipse 9 */
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.icon-wrapper-success,
+.icon-wrapper-fail,
+.icon-wrapper-sm-success,
+.icon-wrapper-sm-fail {
+  border-radius: 50%;
+}
+.icon-wrapper-sm-success,
+.icon-wrapper-success {
+  color: #1ec1c3;
+  background-color: rgba(99, 244, 247, 0.2);
+}
+.icon-wrapper-sm-fail,
+.icon-wrapper-fail {
+  background-color: rgba(254, 116, 72, 0.2);
+}
+.icon-wrapper-sm-success,
+.icon-wrapper-sm-fail {
+  font-size: 0.8rem;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+/* -------------------------------  Table --------------------------------*/
+table::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+table::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 00.2);
+  border-radius: 8px;
+}
+
+/* Handle */
+table::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+}
+
+/* Handle on hover */
+table::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+table.table {
+  border-collapse: collapse;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: auto;
+  display: block;
+}
+.table th,
+.table td {
+  color: white;
+  font-size: 0.8rem;
+  border-bottom: 0px !important;
+  border-top: 0px !important;
+  opacity: 0.9;
+}
+.table tr {
+  display: block;
+}
+.table tr:not(:first-child) {
+  border-top: 1px solid rgba(167, 167, 167, 0.8);
+}
+.table tr td,
+.table tr th {
+  width: 200px;
+}
+.table-header tr:first-child {
+  border-radius: 8px;
+  background-color: #2b2f55;
+}
+.table-header th {
+  text-transform: uppercase;
+}
+
+/* ----------------- License Key -----------------------*/
+.text-faded {
+  color: #aaacbb;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.secret-key {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+/* -------------------- text sizes ----------------- */
+
+.text-sm {
+  font-size: 0.7rem;
+}
+.text-md {
+  font-size: 0.9rem;
+}
+/* ------------------- buttons ---------------- */
+.text-bold {
+  font-weight: 600;
+  opacity: 0.95;
+}
+.gap {
+  gap: 10px;
+}
+.button {
+  border: none;
+  padding: 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+.button-primary {
+  color: white;
+  background-color: #01a9f4;
+}
+.button-danger {
+  background-color: #323662;
+  color: #ec4165;
+}
+.button-light {
+  background-color: #1ec1c3;
+  color: white;
+}
+.button-success {
+  background-color: #323662;
+  color: #1ec1c3;
+}
+.text-success {
+  color: #1ec1c3;
+}
+
+/* ------------------------ ---------------------------- */
+.big-icon-wrapper {
+  border: 1px solid #323662;
+  border-radius: 4px;
+}
+.button:hover {
+  opacity: 0.8;
+}
+
+/* -------------------------- Sorting icon ---------------------- */
+.sorting-arrows {
+  font-size: 0.6rem;
+}
+/* ------------------------ Forms -------------------------------*/
+.form-control {
+  border: none !important;
+}
+/* ----------------------- Modal -------------------------------*/
+.close {
+  text-shadow: none !important;
+  color: white !important;
+}
+.modal-content {
+  border-radius: 0.8rem !important;
+}
+.modal-footer {
+  border-radius: 0 0 0.8rem 0.8rem !important;
+}
+.modal-header,
+.modal-footer,
+.modal-body {
+  border: none !important;
+}
+.modal-content {
+  color: white;
+  background-color: #2d325a !important;
+}
+.modal-footer {
+  color: white;
+  background-color: #292d52 !important;
+}
+.modal-content input {
+  color: white !important;
+  background-color: #252a4b !important;
 }
