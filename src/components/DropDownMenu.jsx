@@ -13,18 +13,10 @@ const DropDownMenu = () => {
               onMouseEnter={() => setShowMenu(true)}
               className={showMenu ? "show-items" : "hide-items"}
             >
-              <li>
-                <a href="#">item 1</a>
-              </li>
-              <li>
-                <a href="#">item 2</a>
-              </li>
-              <li>
-                <a href="#">item 3</a>
-              </li>
-              <li>
-                <a href="#">item 4</a>
-              </li>
+              <li>item 1</li>
+              <li>item 2</li>
+              <li>item 3</li>
+              <li>item 4</li>
             </ul>
           }
         </div>

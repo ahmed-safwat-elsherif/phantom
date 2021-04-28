@@ -27,13 +27,13 @@ const ConfirmationModal = ({ onOpen }) => {
               <p>
                 We sent a link to{" "}
                 <span>
-                  <a href="#" className="link-email">
+                  <a href="/" className="link-email">
                     anthony2142@email.com
                   </a>
                 </span>{" "}
                 and{" "}
                 <span>
-                  <a href="#" className="link-email">
+                  <a href="/" className="link-email">
                     jamesconor@email.com
                   </a>
                 </span>
@@ -47,7 +47,7 @@ const ConfirmationModal = ({ onOpen }) => {
               <p className="text-md">
                 Check your spam or{" "}
                 <span>
-                  <a href="#" className="link">
+                  <a href="/" className="link">
                     Send Again
                   </a>
                 </span>
